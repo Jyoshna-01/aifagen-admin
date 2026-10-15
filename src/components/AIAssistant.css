@@ -21,7 +21,7 @@
 }
 
 .assistant-fab-open {
-  visibility: hidden;
+  display: none;
 }
 
 .assistant-panel {

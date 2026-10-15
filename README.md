@@ -164,6 +164,7 @@ These are prototype credentials, not production credentials. Authentication is h
 | HR and Recruiter workspace access | **Partially implemented** | Login derives a role from the local demo member list and renders a matching workspace. No backend identity, fine-grained permissions, or server-side data scoping is present. |
 | Dashboard metrics and operational records | **Demo/sample-data only** | The interface uses hardcoded, generated, or component-local records rather than live platform data. |
 | Context-aware admin assistant | **Demo AI / rule-based insights** | The floating assistant summarizes the active page's in-memory data and filters. It does not call a model or modify records. |
+| Responsive layouts | **Frontend behavior** | Shared layout safeguards complement page-specific breakpoints for phones, tablets, laptops, and desktop screens. Tables scroll inside their containers; navigation and dialogs adapt to smaller viewports. |
 | User search, filters, profile actions and CSV export | **Implemented and verified (frontend only)** | The page filters and edits local state and creates a CSV in the browser; it does not query a user service. |
 | Server-side pagination | **Not implemented** | Any pagination/filtering in the UI operates on data already loaded in the browser. |
 | Payment history and renewals | **Demo/sample-data only** | Payment and renewal rows are seeded in the Payments component. |

@@ -2182,3 +2182,254 @@ a {
   color: var(--text-color);
   border-color: var(--border-color);
 }
+
+/* Cross-page layout safeguards; page styles retain their own responsive grids. */
+.app-container {
+  width: 100%;
+  overflow-x: clip;
+}
+
+.main-content,
+.role-main-content,
+.top-navbar,
+.app-container main,
+.app-container section,
+.app-container article {
+  min-width: 0;
+}
+
+.app-container img,
+.app-container svg {
+  max-width: 100%;
+}
+
+.app-container :where(
+  .table-wrap,
+  .table-container,
+  .table-responsive,
+  [class*="table-wrap"],
+  [class*="table-container"],
+  [class*="table-wrapper"]
+) {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-container :where(
+  .page-heading,
+  .dashboard-heading,
+  .jobs-page-header,
+  .ai-header,
+  .sources-header,
+  .payments-header,
+  .clients-header,
+  .recruiter-header,
+  .hr-header
+) {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.app-container :where(
+  .toolbar,
+  [class*="-toolbar"],
+  [class*="-actions"],
+  [class*="-controls"],
+  [class*="-filters"]
+) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.app-container :where(input, select, textarea) {
+  max-width: 100%;
+}
+
+.app-container :where(
+  [class*="-grid"],
+  [class*="-row"],
+  [class*="-header"],
+  [class*="-content"],
+  [class*="-panel"]
+) {
+  min-width: 0;
+}
+
+.app-container :where(button, a) {
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 1440px) {
+  .main-content,
+  .role-main-content {
+    padding-right: clamp(34px, 3vw, 64px);
+    padding-left: clamp(34px, 3vw, 64px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-content,
+  .role-main-content {
+    padding: 22px clamp(16px, 2.5vw, 26px);
+  }
+
+  .top-navbar {
+    gap: 12px;
+    padding-right: clamp(16px, 2.5vw, 26px);
+    padding-left: clamp(16px, 2.5vw, 26px);
+  }
+
+  .navbar-left,
+  .navbar-right {
+    gap: 10px;
+  }
+
+  .offcanvas-menu {
+    max-height: calc(100dvh - 100px);
+  }
+}
+
+@media (max-width: 768px) {
+  .top-navbar {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    min-height: 70px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .welcome-text {
+    min-width: 0;
+  }
+
+  .navbar-right {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .main-content,
+  .role-main-content {
+    padding: 18px 16px;
+  }
+
+  .app-container :where(
+    .page-heading,
+    .dashboard-heading,
+    .jobs-page-header,
+    .ai-header,
+    .sources-header,
+    .payments-header,
+    .clients-header,
+    .recruiter-header,
+    .hr-header
+  ) {
+    align-items: stretch;
+  }
+
+  .app-container :where(
+    .page-heading > *,
+    .dashboard-heading > *,
+    .jobs-page-header > *,
+    .ai-header > *,
+    .sources-header > *
+  ) {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content,
+  .role-main-content {
+    padding: 14px 12px;
+  }
+
+  .top-navbar {
+    grid-template-columns: auto minmax(0, 1fr);
+    min-height: 64px;
+    padding: 7px 10px;
+  }
+
+  .navbar-right {
+    justify-content: flex-start;
+    gap: 7px;
+  }
+
+  .navbar-right .appearance-toggle,
+  .navbar-right .icon-button,
+  .navbar-right .menu-toggle {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+
+  .navbar-right .demo-badge {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .main-content .page-footer,
+  .role-main-content .page-footer {
+    align-items: flex-start;
+    overflow-wrap: anywhere;
+  }
+
+  .app-container :where(
+    .toolbar,
+    [class*="-toolbar"],
+    [class*="-actions"],
+    [class*="-controls"],
+    [class*="-filters"]
+  ) {
+    flex-wrap: wrap;
+  }
+
+  .app-container :where(
+    .toolbar input,
+    .toolbar select,
+    [class*="-filters"] input,
+    [class*="-filters"] select
+  ) {
+    flex: 1 1 150px;
+    min-width: 0;
+  }
+
+  .app-container :where([role="dialog"], [aria-modal="true"]) {
+    max-width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+    overflow: auto;
+  }
+
+  .offcanvas-menu {
+    top: 72px;
+    bottom: 8px;
+    left: 8px;
+    width: min(320px, calc(100vw - 16px));
+    max-width: calc(100vw - 16px);
+    max-height: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .main-content,
+  .role-main-content {
+    padding-right: 9px;
+    padding-left: 9px;
+  }
+
+  .navbar-right {
+    gap: 5px;
+  }
+
+  .navbar-right .logout-button {
+    padding: 7px;
+  }
+
+  .app-container :where(button, .btn, [class$="-button"]) {
+    max-width: 100%;
+  }
+}
